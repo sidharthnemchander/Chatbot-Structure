@@ -1,22 +1,20 @@
-# scraping.py
-
-import bs4
+from bs4.filter import SoupStrainer
 from langchain_community.document_loaders import WebBaseLoader
 from typing import List
 
 SCRAPER_CONFIGS = {
     "lilianweng": {
-        "parse_only": bs4.SoupStrainer(
+        "parse_only": SoupStrainer(
             class_=("post-content", "post-header")
         )
     },
     "bbc": {
-        "parse_only": bs4.SoupStrainer(
-            class_=("main-content",) # class must be in a tuple or list
+        "parse_only": SoupStrainer(
+            class_=("main-content",)
         )
     },
     "wikipedia": {
-        "parse_only": bs4.SoupStrainer(
+        "parse_only": SoupStrainer(
             class_=("mw-parser-output",)
         )
     }
