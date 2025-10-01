@@ -1,5 +1,5 @@
 from scraping import scrape_website
-from indexing import RecurCharSplitter
+from indexing import Embeddings
 
 """This is just a scraping example """
 print("--- Scraping Wikipedia ---")
@@ -7,7 +7,8 @@ wiki_url = "https://en.wikipedia.org/wiki/Large_language_model"
 wiki_docs = scrape_website(url=wiki_url, site_key="wikipedia")
 
 if wiki_docs:
-    print(wiki_docs[0].page_content[:500])
+    # print(wiki_docs[0].page_content[:500])
+    pass
 else:
     print("Failed to scrape Wikipedia page.")
 
@@ -16,9 +17,11 @@ else:
 print("--- Scraping Lilian Weng's Blog ---")
 blog_url = "https://lilianweng.github.io/posts/2023-06-23-agent/"
 blog_docs = scrape_website(url=blog_url, site_key="lilianweng")
-splits = RecurCharSplitter(blog_docs)
+embeddings_db = Embeddings(blog_docs)
+
 
 if blog_docs:
-    print(blog_docs[0].page_content[:500])
+    # print(blog_docs[0].page_content[:500])
+    pass
 else:
     print("Failed to scrape blog post.")
